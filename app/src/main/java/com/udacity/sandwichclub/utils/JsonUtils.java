@@ -17,9 +17,11 @@ public class JsonUtils {
             String mainName = name.getString("mainName");
             JSONArray akaArray =  name.getJSONArray("alsoKnownAs");
             List<String> alsoKnownAs = new ArrayList<>();
+            if(akaArray.length() == 0) alsoKnownAs.add("None");
             for (int i=0; i< akaArray.length(); i++)
                 alsoKnownAs.add(akaArray.getString(i));
             String placeOfOrigin = sandwichJSON.getString("placeOfOrigin");
+            if(placeOfOrigin.equals("")) placeOfOrigin = "Unknown";
             String description = sandwichJSON.getString("description");
             String image = sandwichJSON.getString("image");
             JSONArray ingredientArray = sandwichJSON.getJSONArray("ingredients");

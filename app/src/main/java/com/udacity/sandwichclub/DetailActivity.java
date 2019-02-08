@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,9 +66,25 @@ public class DetailActivity extends AppCompatActivity {
         TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
         TextView originTextView = (TextView) findViewById(R.id.origin_tv);
 
-        akaTextView.setText(swich.getAlsoKnownAs().toString());
-        ingredientsTextView.setText(swich.getIngredients().toString());
+//        if(swich.getAlsoKnownAs().size() == 0 || swich.getAlsoKnownAs().get(0).equals("")){
+//            akaTextView.setVisibility(View.INVISIBLE);
+//            findViewById(R.id.)
+//        }
+
+        for(int i=0; i< swich.getAlsoKnownAs().size(); i++){
+            if(i!=0) akaTextView.append(", ");
+            akaTextView.append(swich.getAlsoKnownAs().get(i));
+        }
+
+
+
+        //akaTextView.setText(swich.getAlsoKnownAs().toString());
+        for(String item : swich.getIngredients()){
+            ingredientsTextView.append(item + ", ");
+        }
+        //ingredientsTextView.setText(swich.getIngredients().toString());
         descriptionTextView.setText(swich.getDescription().toString());
+        //if(swich.getPlaceOfOrigin().equals("")) originTextView.setVisibility(View.INVISIBLE);
         originTextView.setText(swich.getPlaceOfOrigin().toString());
 
     }
